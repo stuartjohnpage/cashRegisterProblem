@@ -12,7 +12,7 @@ function checkCashRegister(price, cash, cashInDrawer) {
         "ONE HUNDRED": 100
     }
     const tokensSmallerThanChangeDue = (changeDue, cashInDrawer) => {
-        smallerTokens = [];
+        let smallerTokens = [];
         cashInDrawer.forEach(currencyUnit => {
             if (changeDue >= currencyUnitDenomination[currencyUnit[0]]) {
                 smallerTokens.unshift(currencyUnit[0])
@@ -66,7 +66,7 @@ function checkCashRegister(price, cash, cashInDrawer) {
     }
 
     const calculateChangeDue = (price, cash) => {
-        return price - cash
+        return cash - price
     }
     // begin calculation
     const changeDue = parseFloat(calculateChangeDue(price, cash).toFixed(2))
@@ -89,10 +89,11 @@ function checkCashRegister(price, cash, cashInDrawer) {
     
 }
 
-const cash = 13.76
-const price = 20
-const cid = [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]
-console.log(checkCashRegister(price, cash, cid));
+const answer = checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]])
+console.log(answer)
+
+
+// const cid = [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]
 
 // [["PENNY", 0], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 2], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]
 // [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]
